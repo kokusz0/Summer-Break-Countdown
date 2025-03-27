@@ -67,6 +67,16 @@
 
         .menu div:hover { background: #f0f0f0; }
 
+        /* Left-top visitor stats */
+        #visitor-stats {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            color: black;
+            text-align: left;
+        }
+
         /* Light Theme */
         .light-theme {
             background: white;
@@ -170,6 +180,14 @@
     </script>
 </head>
 <body>
+    <!-- Visitor Stats (Static Placeholder for Now) -->
+    <div id="visitor-stats">
+        <div>Visitors Today: 500</div>
+        <div>Visitors This Week: 3500</div>
+        <div>Visitors This Month: 12000</div>
+        <div>Lifetime Visitors: 50000</div>
+    </div>
+
     <button id="theme-button" onclick="toggleMenu('theme-menu')">Theme</button>
     <div id="theme-menu" class="menu">
         <div onclick="changeTheme('light')">Light</div>
@@ -189,4 +207,3 @@
     <div id="message"></div>
 </body>
 </html>
-l>
