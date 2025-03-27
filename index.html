@@ -134,6 +134,22 @@
         .dark-theme .menu div:hover {
             background: #333;
         }
+
+        /* Thanks Text Style */
+        #thanks {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            color: black;
+        }
+        #thanks a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        #thanks a:hover {
+            text-decoration: underline;
+        }
     </style>
 
     <script>
@@ -211,6 +227,10 @@
     </script>
 </head>
 <body>
+
+    <div id="thanks">
+        Thanks for this website: <a href="https://kokusz0.github.io/kokusz/" target="_blank">kokusz</a>
+    </div>
 
     <button id="theme-button" onclick="toggleMenu('theme-menu')">Theme</button>
     <div id="theme-menu" class="menu">
