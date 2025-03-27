@@ -93,7 +93,8 @@
         .light-theme #countdown,
         .light-theme #survived,
         .light-theme #message,
-        .light-theme #timer {
+        .light-theme #timer,
+        .light-theme #thanks {
             color: black;
         }
 
@@ -116,7 +117,8 @@
         .dark-theme #countdown,
         .dark-theme #survived,
         .dark-theme #message,
-        .dark-theme #timer {
+        .dark-theme #timer,
+        .dark-theme #thanks {
             color: white;
         }
 
@@ -139,8 +141,10 @@
         #thanks {
             position: absolute;
             top: 10px;
-            left: 10px;
-            font-size: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 36px; /* 2x bigger */
+            font-weight: bold;
             color: black;
         }
         #thanks a {
