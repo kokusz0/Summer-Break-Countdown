@@ -192,6 +192,34 @@
 </head>
 <body>
 
+    <script>
+    function updateTimer() {
+        const now = new Date();
+        const currentDate = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Brussels" })); // CEST timezone
+
+        // Set the target time for the next day (midnight)
+        const nextDay = new Date(currentDate);
+        nextDay.setHours(24, 0, 0, 0); // Set it to 00:00 of the next day
+
+        // Calculate the difference in milliseconds
+        const timeDiff = nextDay - currentDate;
+
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerText = `Time until next day: ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    window.onload = function() {
+        updateTimer();
+        setInterval(updateTimer, 1000); // Update the timer every second
+    };
+</script>
+
+<!-- Timer Display -->
+<div id="timer"></div>
+
     <button id="theme-button" onclick="toggleMenu('theme-menu')">Theme</button>
     <div id="theme-menu" class="menu">
         <div onclick="changeTheme('light')">Light</div>
