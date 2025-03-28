@@ -3,37 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown till summer break</title>
-    </script>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: white;
-            color: black;
-        }
-        #clock {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-        }
-        .quote {
-            font-size: 20px;
-            font-weight: bold;
-        }
-    </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J9VZ6F49R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9J9VZ6F49R');
-</script>
-    
+    <title>Countdown to June 20</title>
+    <script src="date.js"></script>
+    <script src="quotes.js"></script>
+    <script src="main.js"></script>
     <style>
         body {
             text-align: center;
@@ -48,233 +21,28 @@
             color: black;
             transition: background-color 0.3s, color 0.3s;
         }
-
+        
         #countdown {
             font-size: 120px;
             font-weight: bold;
-            color: black;
         }
-
-        #survived, #message {
+        
+        #survived, #message, #daily-quote {
             font-size: 36px;
-            color: black;
+            font-weight: bold;
         }
-
-        #timer {
+        
+        #clock {
             font-size: 24px;
             margin-top: 20px;
-            color: black;
-        }
-
-        button {
-            position: absolute;
-            top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #theme-button { right: 140px; }
-        #language-button { right: 20px; }
-
-        .menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-        }
-
-        #theme-menu { right: 140px; }
-        #language-menu { right: 20px; }
-
-        .menu div {
-            padding: 5px 10px;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .menu div:hover { background: #f0f0f0; }
-
-        /* Light Theme */
-        .light-theme {
-            background: white;
-            color: black;
-        }
-
-        .light-theme #countdown,
-        .light-theme #survived,
-        .light-theme #message,
-        .light-theme #timer,
-        .light-theme #thanks {
-            color: black;
-        }
-
-        .light-theme .menu {
-            background: white;
-            color: black;
-        }
-
-        .light-theme .menu div {
-            background: white;
-            color: black;
-        }
-
-        /* Dark Theme */
-        .dark-theme {
-            background: black;
-            color: white;
-        }
-
-        .dark-theme #countdown,
-        .dark-theme #survived,
-        .dark-theme #message,
-        .dark-theme #timer,
-        .dark-theme #thanks {
-            color: white;
-        }
-
-        .dark-theme .menu {
-            background: black;
-            color: white;
-            border: 1px solid white;
-        }
-
-        .dark-theme .menu div {
-            background: black;
-            color: white;
-        }
-
-        .dark-theme .menu div:hover {
-            background: #333;
-        }
-
-        /* Thanks Text Style */
-        #thanks {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 36px; /* 2x bigger */
-            font-weight: bold;
-            color: black;
-        }
-        #thanks a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        #thanks a:hover {
-            text-decoration: underline;
         }
     </style>
-
-    <script>
-        const translations = {
-            "English": { survived: "You survived", message: "days left till summer break!" },
-            "Hungarian": { survived: "Túlélted", message: "nap van hátra a nyári szünetig!" },
-            "Polish": { survived: "Przetrwałeś", message: "dni do przerwy letniej!" },
-            "German": { survived: "Du hast überlebt", message: "Tage bis zu den Sommerferien!" }
-        };
-
-        function updateCountdown() {
-            const today = new Date();
-            const targetDate = new Date(today.getFullYear(), 5, 20);
-            if (today > targetDate) targetDate.setFullYear(today.getFullYear() + 1);
-            const timeDiff = targetDate - today;
-            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            const todayName = daysOfWeek[today.getDay()];
-            document.getElementById("survived").innerText = `You survived ${todayName}!`;
-            document.getElementById("countdown").innerText = daysLeft;
-            document.getElementById("message").innerText = "days left till summer break!";
-        }
-
-        function updateTimer() {
-            const now = new Date();
-            const currentDate = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Brussels" })); // CEST timezone
-
-            // Set the target time for the next day (midnight)
-            const nextDay = new Date(currentDate);
-            nextDay.setHours(24, 0, 0, 0); // Set it to 00:00 of the next day
-
-            // Calculate the difference in milliseconds
-            const timeDiff = nextDay - currentDate;
-
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").innerText = `Time until next day: ${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }
-
-        function changeLanguage(lang) {
-            const today = new Date();
-            const daysOfWeek = {
-                "English": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                "Hungarian": ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"],
-                "Polish": ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
-                "German": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
-            };
-            const todayName = daysOfWeek[lang][today.getDay()];
-            document.getElementById("survived").innerText = `${translations[lang].survived} ${todayName}!`;
-            document.getElementById("message").innerText = translations[lang].message;
-        }
-
-        function changeTheme(theme) {
-            const body = document.body;
-            if (theme === "light") {
-                body.classList.remove("dark-theme");
-                body.classList.add("light-theme");
-            } else {
-                body.classList.remove("light-theme");
-                body.classList.add("dark-theme");
-            }
-        }
-
-        window.onload = function() {
-            updateCountdown();
-            setInterval(updateTimer, 1000); // Update the timer every second
-        };
-    </script>
 </head>
 <body>
-
-    <div id="thanks">
-        Thanks for this website: <a href="https://kokusz0.github.io/kokusz/" target="_blank">kokusz</a>
-    </div>
-<style>
-    
-    <button id="theme-button" onclick="toggleMenu('theme-menu')">Theme</button>
-    <div id="theme-menu" class="menu">
-        <div onclick="changeTheme('light')">Light</div>
-        <div onclick="changeTheme('dark')">Dark</div>
-    </div>
-
-    <button id="language-button" onclick="toggleMenu('language-menu')">Languages</button>
-    <div id="language-menu" class="menu">
-        <div onclick="changeLanguage('English')">English</div>
-        <div onclick="changeLanguage('Hungarian')">Hungarian</div>
-        <div onclick="changeLanguage('Polish')">Polish</div>
-        <div onclick="changeLanguage('German')">German</div>
-    </div>
-
     <div id="survived"></div>
     <div id="countdown"></div>
     <div id="message"></div>
-    <div id="timer"></div>
-    <div id="daily-quote" class="quote"></div>
+    <div id="daily-quote"></div>
     <div id="clock"></div>
 </body>
 </html>
